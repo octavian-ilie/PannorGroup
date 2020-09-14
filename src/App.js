@@ -1,26 +1,35 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 import styled from 'styled-components';
 
-import pannorGroupLogo from './img/logo.png';
+import Header from './components/static/Header';
+import LandingPage from './pages/LandingPage';
+import About from './pages/About';
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const Logo = styled.img`
-  height: 100px;
-  margin-top: -100px;
-`;
-
 function App() {
   return (
-    <Container>
-      <Logo src={pannorGroupLogo} alt="Pannor Romania"/>
+    <Router>
+      <Container>
+        <Header/>
+        <Switch>
+          <Route exact path="/" component={LandingPage}/>
+          <Route path="/about" component={About}/>
+        </Switch>
     </Container>
+    </Router>
   );
 }
 
