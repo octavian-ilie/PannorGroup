@@ -11,6 +11,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #fff;
+  position: fixed;
+  top: 0;
+  border-bottom: 2px solid var(--pannor-color);
 `;
   
   const Wrapper = styled.div`
@@ -40,12 +43,33 @@ const MenuContainer = styled.div`
 const MenuLink = styled(NavLink)`
   color: var(--main-color);
   font-size: 1.2rem;
+  font-family: var(--pannor-regular);
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   margin-left: 2rem;
+  position: relative;
+
+  &:before, :after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0px;
+    height: 1px;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.3s;
+    opacity: 0;
+    background-color: var(--main-color);
+    left: 0;
+  }
 
   &:hover {
     color: var(--pannor-color);
+  }
+
+  &:hover::before {
+    color: var(--pannor-color);
+    width: 100%;
+    opacity: 1;
   }
 
   &.active {
